@@ -18,15 +18,6 @@ public class SinglyLinkedList<T> {
         }
     }
 
-    public static void main(String[] args) {
-        SinglyLinkedList<String> test = new SinglyLinkedList<>();
-        test.addToTail("Carroll");
-        test.addToHead("Andrew");
-        test.addToHead("Clayton");
-        System.out.println(test.removeAt(2));
-        test.printList();
-    }
-
     private Node<T> head;
     private Node<T> tail;
     private int size;
