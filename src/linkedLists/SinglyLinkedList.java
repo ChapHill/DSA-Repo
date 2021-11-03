@@ -75,7 +75,7 @@ public class SinglyLinkedList<T> {
     public T removeHead() {
         if(isEmpty()) {
             throw new NoSuchElementException("Can't remove from empty list");
-        } else if(this.size == 1) {
+        } else if(getSize() == 1) {
             --this.size;
             T ret = this.head.data;
             this.head = this.tail = null;
@@ -93,7 +93,7 @@ public class SinglyLinkedList<T> {
     public T removeTail() {
         if(isEmpty()) {
             throw new NoSuchElementException("Can't remove from empty list");
-        } else if(this.size == 1) {
+        } else if(getSize() == 1) {
             --this.size;
             T ret = this.head.data;
             this.head = this.tail = null;
@@ -133,6 +133,10 @@ public class SinglyLinkedList<T> {
             --size;
             return ret;
         }
+    }
+
+    public int getSize() {
+        return this.size;
     }
 
     public void printList() {
