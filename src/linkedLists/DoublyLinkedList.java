@@ -56,7 +56,23 @@ public class DoublyLinkedList<T> {
     }
 
     public void insertAt(int position, T data) {
-
+        if(position < 1 || position > this.size+1) {
+            throw new IllegalArgumentException("Position not valid");
+        }
+        if(position == 1) {
+            addToHead(data);
+        } else if(position == this.size + 1) {
+            addToTail(data);
+        } else {
+            Node<T> runner = this.head;
+            for(int i = 1; i < position-1; i++) {
+                runner = runner.next;
+            }
+            Node<T> oldNext = runner.next;
+            runner.next = new Node<T>(data, oldNext, runner);
+            oldNext.prev = runner.next;
+            ++this.size;
+        }
     }
 
     public T removeHead() {
@@ -78,7 +94,7 @@ public class DoublyLinkedList<T> {
 
     public T removeTail() {
         if(isEmpty()) {
-            throw new NoSuchElementException("Empty List");
+            throw new NoSuchElementException("Can't remove from empty list");
         } else if(getSize() == 1) {
             --this.size;
             T ret = this.head.data;
@@ -97,6 +113,7 @@ public class DoublyLinkedList<T> {
         return this.size;
     }
 
+    //print list in a visible manner and point to null at end of list
     public void printList() {
         if(isEmpty()) {
             throw new NoSuchElementException("Empty list");

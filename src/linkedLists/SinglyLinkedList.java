@@ -139,6 +139,8 @@ public class SinglyLinkedList<T> {
         return this.size;
     }
 
+
+    //print list in a visible manner and point to null at end of list
     public void printList() {
         if(isEmpty()) {
             throw new NoSuchElementException("Empty list");
