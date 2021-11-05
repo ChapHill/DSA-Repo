@@ -21,14 +21,6 @@ public class DoublyLinkedList<T> {
         }
     }
 
-    public static void main(String[] args) {
-        DoublyLinkedList<Integer> test = new DoublyLinkedList<>();
-        test.addToHead(21);
-        test.addToHead(100);
-        test.removeTail();
-
-    }
-
     private Node<T> head;
     private Node<T> tail;
     private int size;
