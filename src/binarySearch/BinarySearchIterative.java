@@ -13,6 +13,8 @@ package binarySearch;
  * return -1 if not found
  * **/
 
+//git test
+
 public class BinarySearchIterative {
 
     public int binarySearch(int[] array, int target) {
