@@ -5,6 +5,8 @@ package stack;
  * Can only remove and add items from the top of the stack
  */
 
+
+
 import java.util.NoSuchElementException;
 
 public class Stack<T> {
