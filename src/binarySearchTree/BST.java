@@ -85,7 +85,62 @@ public class BST<T extends Comparable<T>>{
                 node.data = null;
                 node = null;
                 return leftChild;
+            } else {
+                //in this case the node to delete has 2 children
+                //choose either the successor to be the smallest value in the
+                //right subtree or the largest value in the left subtree
+
+                Node temp = min(node.right);
+
+                //swap values
+                node.data = temp.data;
+
+                //remove the node we had found with temp
+                node.right = remove(node.right, temp.data);
+
+                //if you wanted to replace with the max value of the right subtree,
+                //Node temp = max(node.left);
+                //node.data = temp.data;
+                //node.left = remove(node.left, temp.data);
             }
+        }
+
+        return node;
+    }
+
+    public Node min(Node node) {
+        Node curr = node;
+        while(curr.left != null) {
+            curr = curr.left;
+        }
+        return curr;
+    }
+
+    public Node max(Node node) {
+        Node curr = node;
+        while(curr.right != null) {
+            curr = curr.right;
+        }
+        return curr;
+    }
+
+    public boolean contains(T data) {
+        return contains(root, data);
+    }
+
+    private boolean contains(Node node, T data) {
+        if(node == null) {
+            return false; //not found
+        }
+
+        int cmp = data.compareTo(node.data);
+
+        if(cmp < 0) {
+            return contains(node.left, data);
+        } else if(cmp > 0) {
+            return contains(node.right, data);
+        } else {
+            return true; //value we are looking for has been found
         }
     }
 }
